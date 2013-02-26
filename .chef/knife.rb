@@ -18,5 +18,5 @@ knife[:aws_secret_access_key] = ENV['AWS_SECRET_KEY']
 knife[:aws_ssh_key_id]        = ENV['USER']
 knife[:region]                = "us-east-1"
 knife[:flavor]                = "m1.medium"
-knife[:image]                 = "ami-7ce17315"  # Debian 6.0.7 (Squeeze)
+knife[:image]                 = "ami-4d20a724"  # Debian 6.0.6 (Squeeze)
 knife[:ssh_user]              = "admin"
