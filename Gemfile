@@ -10,7 +10,13 @@ group :builder do
   gem 'librarian',    '~> 0.0.26'
 end
 
-group :test do
+group :development do
+  gem 'guard-foodcritic'
+  gem 'rb-fsevent',       :require => false
+  gem 'rb-inotify',       :require => false
+end
+
+group :development, :test do
   gem 'foodcritic', '~> 1.7'
   gem 'rake'
 end
