@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: debamine
-# Recipe:: default
+# Recipe:: ec2debian-build-ami
 #
 # Author:: Teemu Matilainen <teemu.matilainen@iki.fi>
 #
@@ -19,4 +19,9 @@
 # limitations under the License.
 #
 
-include_recipe 'debamine::ec2debian-build-ami'
+package "git"
+
+git node['debamine']['ec2debian-build-ami']['root_dir'] do
+  repository node['debamine']['ec2debian-build-ami']['git_uri']
+  reference  node['debamine']['ec2debian-build-ami']['git_ref']
+end
