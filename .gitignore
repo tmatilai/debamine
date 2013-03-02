@@ -3,3 +3,5 @@
 /cookbooks/
 /Gemfile.lock
 /tmp/librarian/
+
+/data_bags/debamine/config.json

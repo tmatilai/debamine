@@ -1,0 +1,16 @@
+{
+  "id": "config",
+  "aws": {
+    "access_key": "XXX",
+    "secret_key": "XXX"
+  },
+  "arch": "amd64",
+  "codename": "wheezy",
+  "description": "Debian 7.0 Wheezy (pre)",
+  "volume-size": 8,
+  "plugins": [
+    "admin-user",
+    "publish-ami",
+    "publish-snapshot"
+  ]
+}

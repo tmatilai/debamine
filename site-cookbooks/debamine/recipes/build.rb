@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: debamine
-# Recipe:: default
+# Recipe:: build
 #
 # Author:: Teemu Matilainen <teemu.matilainen@iki.fi>
 #
@@ -19,4 +19,25 @@
 # limitations under the License.
 #
 
-include_recipe 'debamine::build'
+include_recipe 'debamine::ec2debian-build-ami'
+
+config = data_bag_item('debamine', 'config')
+
+cmd = "./ec2debian-build-ami"
+%w[arch codename description volume-size].each do |key|
+  cmd << " --#{key} '#{config[key]}'" if config[key]
+end
+if config['plugins']
+  config['plugins'].each do |plugin|
+    cmd << " --plugin 'plugins/#{plugin}'"
+  end
+end
+
+execute "ec2debian-build-ami" do
+  command cmd
+  cwd node['debamine']['ec2debian-build-ami']['root_dir']
+  environment(
+    'EC2_ACCESS_KEY' => config['aws']['access_key'],
+    'EC2_SECRET_KEY' => config['aws']['secret_key']
+  )
+end
